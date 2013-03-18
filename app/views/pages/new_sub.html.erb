@@ -1,0 +1,35 @@
+﻿<p>Add subpage</p>
+<%= form_for :page, :url => name_create_path do |f| %>
+  <% if @page.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@page.errors.count, "error") %> prohibited
+        this page from being saved:</h2>
+    <ul>
+    <% @page.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', :action => :index %>

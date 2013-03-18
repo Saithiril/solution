@@ -1,0 +1,16 @@
+﻿<h1>Listing posts</h1>
+ <%= link_to 'Add page', :action => :new %>
+ 
+<ul> 
+	<% @pages.each do |page| %>
+		<% if not page.page %>
+			<li><%= page.title %>
+				<p><%= raw page.getsubpages(@_subpages) %></p>
+				<%= link_to 'Show', :action => :show, :name => page.getFullPath(page.id).reverse.join("/") %>
+				<%= link_to 'edit', :action => :edit, :name => page.getFullPath(page.id).reverse.join("/") %>
+				<%= link_to 'delete', { :action => :destroy, :name => page.getFullPath(page.id).reverse.join('/') }, :method => :delete %></li>
+			<ul>
+			</ul>
+		<% end %>
+	<% end %>
+</ul>
